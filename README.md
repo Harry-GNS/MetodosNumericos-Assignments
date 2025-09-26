@@ -7,12 +7,15 @@ Este repositorio reúne todos mis trabajos de métodos numéricos que anteriorme
 
 
 
-![Ejercicio 3](Taller-Clase/Ejercicio%203.gif)
-
-![Intersecciones Animación](Taller-Clase/intersecciones_animacion.gif)
-
-![Método de Newton](Taller-Clase/newton_method.gif)
-
-![Proyecto 1B](Proyecto1B-MetodosNumericos-Geometria/image.png)
+<table>
+<tr>
+<td><img src="Taller-Clase/Ejercicio%203.gif" alt="Ejercicio 3" width="400"/></td>
+<td><img src="Taller-Clase/intersecciones_animacion.gif" alt="Intersecciones Animación" width="400"/></td>
+</tr>
+<tr>
+<td><img src="Taller-Clase/newton_method.gif" alt="Método de Newton" width="400"/></td>
+<td><img src="Proyecto1B-MetodosNumericos-Geometria/image.png" alt="Proyecto 1B" width="400"/></td>
+</tr>
+</table>
 
 Cada carpeta contiene un README específico que explica su contenido detallado.
