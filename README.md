@@ -12,6 +12,7 @@ Este repositorio reúne todos mis trabajos de métodos numéricos que anteriorme
 ![Intersecciones Animación](Taller-Clase/intersecciones_animacion.gif)
 
 ![Método de Newton](Taller-Clase/newton_method.gif)
-![Proyecyo IB](Proyecto1B-MetodosNumericos-Geometria\image.png)
+
+![Proyecto 1B](Proyecto1B-MetodosNumericos-Geometria/image.png)
 
 Cada carpeta contiene un README específico que explica su contenido detallado.
