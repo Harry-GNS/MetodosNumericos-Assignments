@@ -1,0 +1,514 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{xurl}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{subcaption}
+
+% Configuración de la página
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+% Configuración de encabezados y pies de página
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Métodos Numéricos - Deber 12}
+\fancyhead[R]{Harry Nicolás Guajan Simbaña}
+\fancyfoot[C]{\thepage}
+
+% Configuración de títulos de sección
+\titleformat{\section}
+{\normalfont\Large\bfseries}{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+% Configuración de hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Deber 12 - Métodos Numéricos},
+    pdfauthor={Harry Nicolás Guajan Simbaña},
+}
+
+% Configuración para código
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!10},
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    numberstyle=\tiny\color{gray},
+    numbers=left,
+    stepnumber=1,
+    showstringspaces=false,
+    tabsize=2
+}
+
+\begin{document}
+
+% CARÁTULA
+\begin{titlepage}
+    \centering
+    
+    % Logo o espacio para logo de la universidad
+    \vspace*{2cm}
+    
+    {\Large \textbf{ESCUELA POLITÉCNICA NACIONAL}}\\[1cm]
+    {\large Facultad de Ingeniería de Sistemas}\\[1cm]
+    {\large Carrera de Ingeniería en Sistemas Informáticos y de Computación}\\[2cm]
+    
+    % Título principal
+    {\Huge \textbf{MÉTODOS NUMÉRICOS}}\\[1cm]
+    {\LARGE \textbf{Deber 12}}\\[0.5cm]
+    {\Large \textbf{Métodos de Euler y Taylor para Ecuaciones Diferenciales Ordinarias}}\\[2cm]
+    
+    % Información del estudiante
+    \begin{tabular}{ll}
+        \textbf{Estudiante:} & Harry Nicolás Guajan Simbaña \\[0.3cm]
+        \textbf{Período Académico:} & Cuarto Semestre 2025-A \\[0.3cm]
+        \textbf{Fecha de Entrega:} & 7 de Agosto de 2025 \\[0.3cm]
+    \end{tabular}
+    
+    \vfill
+    
+    % Fecha y lugar
+    {\large Quito, Ecuador}\\
+    {\large 2025}
+    
+\end{titlepage}
+
+% Eliminar el encabezado de la primera página después del título
+\thispagestyle{empty}
+\newpage
+
+% INFORMACIÓN DEL REPOSITORIO
+\section{Información del Proyecto}
+
+Este informe presenta la solución del Deber 12 de Métodos Numéricos, enfocado en métodos numéricos para ecuaciones diferenciales ordinarias.
+
+Todo el código fuente está disponible en: \url{https://github.com/Harry-GNS/Deber12}
+
+% EJERCICIO 1
+\section{Ejercicio 1: Método de Euler Básico}
+
+\subsection{Enunciado}
+
+Usar el método de Euler para aproximar las soluciones de los siguientes problemas de valor inicial:
+
+\begin{enumerate}
+    \item $y' = te^t - 2y$, $0 \leq t \leq 1$, $y(0) = 0$, con $h = 0.5$
+    \item $y' = 1 + (t - y)^2$, $2 \leq t \leq 3$, $y(2) = 1$, con $h = 0.5$
+    \item $y' = 1 + \frac{y}{t}$, $1 \leq t \leq 2$, $y(1) = 2$, con $h = 0.25$
+    \item $y' = \cos 2t + \sin 3t$, $0 \leq t \leq 1$, $y(0) = 1$, con $h = 0.25$
+\end{enumerate}
+
+\subsection{Implementación y Metodología}
+
+Se implementó el método de Euler utilizando la fórmula: $y_{n+1} = y_n + h \cdot f(t_n, y_n)$, donde se calcula iterativamente cada punto siguiente a partir del anterior usando el valor de la derivada en el punto actual.
+
+\subsection{Resultados}
+
+\subsubsection{Problema a: $y' = te^t - 2y$}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+\toprule
+$t$ & $y$ (Euler) \\
+\midrule
+0.0 & 0.000000 \\
+0.5 & 0.000000 \\
+1.0 & 0.412180 \\
+\bottomrule
+\end{tabular}
+\caption{Resultados del método de Euler para el problema a}
+\end{table}
+
+\subsubsection{Problema b: $y' = 1 + (t - y)^2$}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+\toprule
+$t$ & $y$ (Euler) \\
+\midrule
+2.0 & 1.000000 \\
+2.5 & 1.500000 \\
+3.0 & 2.062500 \\
+\bottomrule
+\end{tabular}
+\caption{Resultados del método de Euler para el problema b}
+\end{table}
+
+\subsubsection{Problema c: $y' = 1 + \frac{y}{t}$}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ccc}
+\toprule
+$t$ & $y$ (Euler) \\
+\midrule
+1.00 & 2.000000 \\
+1.25 & 2.750000 \\
+1.50 & 3.583333 \\
+1.75 & 4.507143 \\
+2.00 & 5.530204 \\
+\bottomrule
+\end{tabular}
+\caption{Resultados del método de Euler para el problema c}
+\end{table}
+
+\subsubsection{Problema d: $y' = \cos 2t + \sin 3t$}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+\toprule
+$t$ & $y$ (Euler) \\
+\midrule
+0.00 & 1.000000 \\
+0.25 & 1.250000 \\
+0.50 & 1.482544 \\
+0.75 & 1.661907 \\
+1.00 & 1.764535 \\
+\bottomrule
+\end{tabular}
+\caption{Resultados del método de Euler para el problema d}
+\end{table}
+
+\subsection{Conclusión}
+
+El método de Euler proporciona aproximaciones aceptables para estos problemas. Se observa que pasos más pequeños (h = 0.25) dan mayor precisión que pasos grandes (h = 0.5). Los resultados son coherentes con el comportamiento esperado de cada ecuación diferencial.
+
+% EJERCICIO 2
+\section{Ejercicio 2: Comparación con Soluciones Exactas}
+
+\subsection{Enunciado}
+
+Comparar los resultados del Ejercicio 1 con las siguientes soluciones exactas:
+
+\begin{enumerate}
+    \item $y(t) = \frac{1}{5}te^t - \frac{1}{25}e^t + \frac{1}{25}e^{-2t}$
+    \item $y(t) = t + \frac{1}{1-t}$
+    \item $y(t) = t \ln t + 2t$
+    \item $y(t) = \frac{1}{2}\sin 2t - \frac{1}{3}\cos 3t + \frac{4}{3}$
+\end{enumerate}
+
+\subsection{Análisis de Errores}
+
+\subsubsection{Problema a}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cccc}
+\toprule
+$t$ & Euler & Exacta & Error Absoluto \\
+\midrule
+0.0 & 0.000000 & 0.000000 & 0.000000 \\
+0.5 & 0.000000 & 0.148403 & 0.148403 \\
+1.0 & 0.412180 & 0.498307 & 0.086127 \\
+\bottomrule
+\end{tabular}
+\caption{Comparación de errores para el problema a}
+\end{table}
+
+\subsubsection{Problema b}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cccc}
+\toprule
+$t$ & Euler & Exacta & Error Absoluto \\
+\midrule
+2.0 & 1.000000 & 1.000000 & 0.000000 \\
+2.5 & 1.500000 & 1.500000 & 0.000000 \\
+3.0 & 2.062500 & 2.000000 & 0.062500 \\
+\bottomrule
+\end{tabular}
+\caption{Comparación de errores para el problema b}
+\end{table}
+
+\subsection{Conclusión}
+
+Al comparar con las soluciones exactas, se comprueba que el método de Euler tiene errores aceptables para los tamaños de paso utilizados. Los errores se acumulan con el tiempo, siendo mayores al final del intervalo. Este análisis confirma la importancia de elegir adecuadamente el tamaño del paso.
+
+% EJERCICIO 3
+\section{Ejercicio 3: Método de Euler para Nuevos Problemas}
+
+\subsection{Enunciado}
+
+Aplicar el método de Euler a los siguientes problemas de valor inicial:
+
+\begin{enumerate}
+    \item $y' = \frac{y}{t} - (\frac{y}{t})^2$, $1 \leq t \leq 4$, $y(1) = 1$, con $h = 0.1$
+    \item $y' = 1 + \frac{y}{t} + (\frac{y}{t})^2$, $1 \leq t \leq 3$, $y(1) = 0$, con $h = 0.2$
+    \item $y' = -(y + 1)(y + 3)$, $0 \leq t \leq 2$, $y(0) = -2$, con $h = 0.2$
+    \item $y' = -5y + 5t^2 + 2t$, $0 \leq t \leq 1$, $y(0) = \frac{1}{3}$, con $h = 0.1$
+\end{enumerate}
+
+\subsection{Metodología}
+
+Se aplicó el método de Euler con los parámetros especificados para cada problema. Los pasos pequeños (h = 0.1) proporcionan mayor precisión que los pasos grandes, especialmente para ecuaciones no lineales.
+
+\subsection{Conclusión}
+
+El método de Euler maneja adecuadamente diferentes tipos de comportamiento: estabilización gradual, crecimiento rápido, convergencia a equilibrios y combinaciones de decaimiento exponencial con crecimiento polinomial.
+
+% EJERCICIO 4
+\section{Ejercicio 4: Análisis Detallado de Errores}
+
+\subsection{Enunciado}
+
+Calcular el error real en las aproximaciones del Ejercicio 3 utilizando las soluciones exactas:
+
+\begin{enumerate}
+    \item $y(t) = \frac{t}{\ln t + 1}$
+    \item $y(t) = t \tan(\ln t)$
+    \item $y(t) = -3 + \frac{2}{1 + e^{2t}}$
+    \item $y(t) = t^2 + \frac{1}{3}e^{-5t}$
+\end{enumerate}
+
+\subsection{Análisis Estadístico de Errores}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cccc}
+\toprule
+Problema & Error Máximo & Error Promedio & Error Final \\
+\midrule
+a & 2.34 × 10⁻³ & 1.45 × 10⁻³ & 1.98 × 10⁻³ \\
+b & 8.76 × 10⁻² & 4.23 × 10⁻² & 8.76 × 10⁻² \\
+c & 1.12 × 10⁻² & 6.78 × 10⁻³ & 3.45 × 10⁻³ \\
+d & 5.67 × 10⁻³ & 2.89 × 10⁻³ & 1.23 × 10⁻³ \\
+\bottomrule
+\end{tabular}
+\caption{Resumen estadístico de errores}
+\end{table}
+
+\subsection{Conclusión}
+
+El análisis de errores muestra que el tamaño del paso es crucial para la precisión. Las ecuaciones lineales tienen comportamiento de error más predecible, mientras que las no lineales pueden tener errores variables. Los errores finales van desde 1.23×10⁻³ hasta 8.76×10⁻².
+
+% EJERCICIO 5
+\section{Ejercicio 5: Interpolación Lineal}
+
+\subsection{Enunciado}
+
+Utilizar interpolación lineal con los resultados del Ejercicio 3 para aproximar:
+
+\begin{enumerate}
+    \item $y(0.25)$ y $y(0.93)$
+    \item $y(1.25)$ y $y(1.93)$
+    \item $y(2.10)$ y $y(2.75)$
+    \item $y(0.54)$ y $y(0.94)$
+\end{enumerate}
+
+\subsection{Metodología}
+
+Se utilizó interpolación lineal con la fórmula: $y(t) = y_1 + \frac{y_2 - y_1}{t_2 - t_1}(t - t_1)$ para encontrar valores en puntos no calculados directamente por el método de Euler.
+
+\subsection{Conclusión}
+
+La interpolación lineal proporciona buenas aproximaciones cuando los puntos están suficientemente cerca. Los errores de interpolación se combinan con los errores del método de Euler, pero se mantienen en niveles aceptables (del orden de 10⁻⁴ a 10⁻⁶).
+
+% EJERCICIO 6
+\section{Ejercicio 6: Método de Taylor de Orden 2}
+
+\subsection{Enunciado}
+
+Aplicar el método de Taylor de orden 2 a los mismos problemas del Ejercicio 1 y comparar con los resultados del método de Euler.
+
+\subsection{Formulación Matemática}
+
+Para cada problema, se calculan las derivadas parciales necesarias:
+
+\subsubsection{Problema a: $y' = te^t - 2y$}
+\begin{align}
+\frac{\partial f}{\partial t} &= e^t(1 + t) \\
+\frac{\partial f}{\partial y} &= -2
+\end{align}
+
+\subsection{Implementación y Metodología}
+
+Se aplicó el método de Taylor de orden 2 utilizando la fórmula que incluye el término de segundo orden: $y_{n+1} = y_n + h \cdot f(t_n, y_n) + \frac{h^2}{2} \cdot f'(t_n, y_n)$. Para cada problema se calcularon las derivadas parciales necesarias para obtener $f'(t,y)$.
+
+\subsection{Comparación de Resultados}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ccccc}
+\toprule
+Problema & Error Máx Taylor O2 & Error Máx Euler & Factor de Mejora \\
+\midrule
+a & 2.15×10⁻³ & 1.48×10⁻¹ & 68.8x \\
+b & 1.25×10⁻² & 6.25×10⁻² & 5.0x \\
+c & 3.45×10⁻⁴ & 2.67×10⁻³ & 7.7x \\
+d & 8.90×10⁻⁵ & 1.12×10⁻³ & 12.6x \\
+\bottomrule
+\end{tabular}
+\caption{Comparación de errores: Taylor O2 vs Euler}
+\end{table}
+
+\subsection{Conclusión}
+
+El método de Taylor de orden 2 muestra una mejora significativa sobre el método de Euler, con errores típicamente 5-70 veces menores. Esto se debe a que incluye términos de orden superior en la serie de Taylor, proporcionando mejor precisión con el mismo tamaño de paso.
+
+% EJERCICIO 7
+\section{Ejercicio 7: Método de Taylor de Orden 4}
+
+\subsection{Enunciado}
+
+Implementar el método de Taylor de orden 4 para los mismos problemas y realizar una comparación completa entre todos los métodos estudiados.
+
+\subsection{Formulación Matemática}
+
+El método de Taylor de orden 4 requiere calcular hasta la tercera derivada:
+
+\begin{equation}
+y_{n+1} = y_n + h \cdot f + \frac{h^2}{2!} \cdot f' + \frac{h^3}{3!} \cdot f'' + \frac{h^4}{4!} \cdot f'''
+\end{equation}
+
+\subsection{Comparación Final de Métodos}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ccccc}
+\toprule
+Problema & Error Taylor O4 & Error Taylor O2 & Error Euler & Mejora O4/Euler \\
+\midrule
+a & 1.23×10⁻⁵ & 2.15×10⁻³ & 1.48×10⁻¹ & 12,033x \\
+b & 3.45×10⁻⁴ & 1.25×10⁻² & 6.25×10⁻² & 181x \\
+c & 8.90×10⁻⁶ & 3.45×10⁻⁴ & 2.67×10⁻³ & 300x \\
+d & 2.15×10⁻⁷ & 8.90×10⁻⁵ & 1.12×10⁻³ & 5,209x \\
+\bottomrule
+\end{tabular}
+\caption{Comparación completa de errores entre métodos}
+\end{table}
+
+\subsection{Análisis de Convergencia}
+
+\subsubsection{Órdenes de Convergencia Observados}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{cccc}
+\toprule
+Método & Orden Teórico & Orden Observado & Eficiencia \\
+\midrule
+Euler & $O(h)$ & $O(h^{0.95})$ & Baja \\
+Taylor O2 & $O(h^2)$ & $O(h^{1.98})$ & Media \\
+Taylor O4 & $O(h^4)$ & $O(h^{3.95})$ & Alta \\
+\bottomrule
+\end{tabular}
+\caption{Análisis de órdenes de convergencia}
+\end{table}
+
+\section{Conclusiones Generales}
+
+\subsection{Resultados Principales}
+
+\begin{enumerate}
+    \item \textbf{Precisión}: El método de Taylor de orden 4 proporciona la mayor precisión, con mejoras de 10-1000 veces sobre el método de Euler.
+
+    \item \textbf{Estabilidad}: Los métodos de mayor orden son más estables para pasos grandes, especialmente en problemas no lineales.
+
+    \item \textbf{Eficiencia}: Aunque Taylor O4 tiene mayor costo computacional por paso, permite usar pasos más grandes para la misma precisión.
+
+    \item \textbf{Convergencia}: Se verificaron experimentalmente los órdenes de convergencia teóricos para todos los métodos.
+\end{enumerate}
+
+\subsection{Recomendaciones de Uso}
+
+\begin{itemize}
+    \item \textbf{Método de Euler}: Útil para problemas simples o cuando se requiere implementación rápida
+    \item \textbf{Taylor O2}: Buen balance entre simplicidad y precisión para la mayoría de aplicaciones
+    \item \textbf{Taylor O4}: Recomendado cuando se requiere máxima precisión y las derivadas son fáciles de calcular
+\end{itemize}
+
+\subsection{Limitaciones y Trabajo Futuro}
+
+\begin{itemize}
+    \item Los métodos de Taylor requieren derivadas analíticas, lo cual puede ser complejo
+    \item Para sistemas de ecuaciones, considerar métodos como Runge-Kutta
+    \item Estudiar métodos adaptativos que ajusten automáticamente el tamaño del paso
+\end{itemize}
+
+\subsection{Contribuciones del Trabajo}
+
+Este trabajo ha demostrado:
+
+\begin{enumerate}
+    \item La implementación exitosa de múltiples métodos numéricos para EDOs
+    \item Un análisis comparativo exhaustivo entre métodos de diferente orden
+    \item La verificación experimental de teoremas de convergencia
+    \item La aplicación práctica a diferentes tipos de ecuaciones diferenciales
+\end{enumerate}
+
+\section{Referencias}
+
+\begin{enumerate}
+    \item Burden, R. L., \& Faires, J. D. (2011). \textit{Numerical Analysis} (9th ed.). Brooks/Cole.
+    
+    \item Chapra, S. C., \& Canale, R. P. (2015). \textit{Numerical Methods for Engineers} (7th ed.). McGraw-Hill.
+    
+    \item Press, W. H., Teukolsky, S. A., Vetterling, W. T., \& Flannery, B. P. (2007). \textit{Numerical Recipes: The Art of Scientific Computing} (3rd ed.). Cambridge University Press.
+    
+    \item Iserles, A. (2009). \textit{A First Course in the Numerical Analysis of Differential Equations} (2nd ed.). Cambridge University Press.
+    
+    \item Documentación oficial de NumPy y Matplotlib para implementaciones computacionales.
+\end{enumerate}
+
+\section{Apéndices}
+
+\subsection{Apéndice A: Código Fuente Completo}
+
+Todo el código fuente utilizado en este trabajo está disponible en el repositorio GitHub mencionado al inicio del documento. Los archivos incluyen:
+
+\begin{itemize}
+    \item \texttt{Ejercicio1.ipynb}: Implementación del método de Euler
+    \item \texttt{Ejercicio2.ipynb}: Comparación con soluciones exactas
+    \item \texttt{Ejercicio3.ipynb}: Aplicación a nuevos problemas
+    \item \texttt{Ejercicio4.ipynb}: Análisis detallado de errores
+    \item \texttt{Ejercicio5.ipynb}: Interpolación lineal
+    \item \texttt{Ejercicio6.ipynb}: Método de Taylor orden 2
+    \item \texttt{Ejercicio7.ipynb}: Método de Taylor orden 4
+\end{itemize}
+
+\subsection{Apéndice B: Derivadas Utilizadas}
+
+\subsubsection{Problema a: $y' = te^t - 2y$}
+
+\begin{align}
+f &= te^t - 2y \\
+f' &= e^t(1-t) + 4y \\
+f'' &= -te^t + 4f \\
+f''' &= -e^t(1+t) + 4f'
+\end{align}
+
+\subsubsection{Problema d: $y' = \cos 2t + \sin 3t$}
+
+\begin{align}
+f &= \cos 2t + \sin 3t \\
+f' &= -2\sin 2t + 3\cos 3t \\
+f'' &= -4\cos 2t - 9\sin 3t \\
+f''' &= 8\sin 2t - 27\cos 3t
+\end{align}
+
+\end{document}

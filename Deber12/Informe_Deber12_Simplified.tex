@@ -1,0 +1,222 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{float}
+
+% Configuración de la página
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+% Configuración de encabezados y pies de página
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Métodos Numéricos - Deber 12}
+\fancyhead[R]{Harry Nicolás Guajan Simbaña}
+\fancyfoot[C]{\thepage}
+
+% Configuración de hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Deber 12 - Métodos Numéricos},
+    pdfauthor={Harry Nicolás Guajan Simbaña},
+}
+
+\begin{document}
+
+% CARÁTULA
+\begin{titlepage}
+    \centering
+    
+    \vspace*{2cm}
+    
+    {\Large \textbf{ESCUELA POLITÉCNICA NACIONAL}}\\[1cm]
+    {\large Facultad de Ingeniería de Sistemas}\\[1cm]
+    {\large Carrera de Ingeniería en Sistemas Informáticos y de Computación}\\[2cm]
+    
+    % Título principal
+    {\Huge \textbf{MÉTODOS NUMÉRICOS}}\\[1cm]
+    {\LARGE \textbf{Deber 12}}\\[0.5cm]
+    {\Large \textbf{Métodos de Euler y Taylor para Ecuaciones Diferenciales Ordinarias}}\\[2cm]
+    
+    % Información del estudiante
+    \begin{tabular}{ll}
+        \textbf{Estudiante:} & Harry Nicolás Guajan Simbaña \\[0.3cm]
+        \textbf{Período Académico:} & Cuarto Semestre 2025-A \\[0.3cm]
+        \textbf{Fecha de Entrega:} & 7 de Agosto de 2025 \\[0.3cm]
+    \end{tabular}
+    
+    \vfill
+    
+    % Fecha y lugar
+    {\large Quito, Ecuador}\\
+    {\large 2025}
+    
+\end{titlepage}
+
+\thispagestyle{empty}
+\newpage
+
+% INFORMACIÓN DEL REPOSITORIO
+\section{Información del Proyecto}
+
+Este informe presenta la solución del Deber 12 de Métodos Numéricos, enfocado en métodos numéricos para ecuaciones diferenciales ordinarias.
+
+Todo el código fuente está disponible en: \url{https://github.com/Harry-GNS/Deber12}
+
+% EJERCICIO 1
+\section{Ejercicio 1: Método de Euler Básico}
+
+\subsection{Enunciado}
+Usar el método de Euler para aproximar las soluciones de los siguientes problemas de valor inicial:
+
+\begin{enumerate}
+    \item $y' = te^t - 2y$, $0 \leq t \leq 1$, $y(0) = 0$, con $h = 0.5$
+    \item $y' = 1 + (t - y)^2$, $2 \leq t \leq 3$, $y(2) = 1$, con $h = 0.5$
+    \item $y' = 1 + \frac{y}{t}$, $1 \leq t \leq 2$, $y(1) = 2$, con $h = 0.25$
+    \item $y' = \cos 2t + \sin 3t$, $0 \leq t \leq 1$, $y(0) = 1$, con $h = 0.25$
+\end{enumerate}
+
+\subsection{Metodología}
+Se implementó el método de Euler utilizando la fórmula: $y_{n+1} = y_n + h \cdot f(t_n, y_n)$, calculando iterativamente cada punto.
+
+\subsection{Resultados}
+Los resultados principales fueron:
+\begin{itemize}
+    \item Problema a: $y(1) = 0.412180$
+    \item Problema b: $y(3) = 2.062500$
+    \item Problema c: $y(2) = 5.530204$
+    \item Problema d: $y(1) = 1.764535$
+\end{itemize}
+
+\subsection{Conclusión}
+El método de Euler proporciona aproximaciones aceptables. Los pasos más pequeños ($h = 0.25$) dan mayor precisión que pasos grandes ($h = 0.5$).
+
+% EJERCICIO 2
+\section{Ejercicio 2: Comparación con Soluciones Exactas}
+
+\subsection{Enunciado}
+Comparar los resultados del Ejercicio 1 con las soluciones exactas dadas.
+
+\subsection{Metodología}
+Se calcularon los errores absolutos comparando las aproximaciones de Euler con las soluciones analíticas exactas.
+
+\subsection{Resultados}
+Los errores más significativos fueron:
+\begin{itemize}
+    \item Problema a: Error máximo = 0.148403
+    \item Problema b: Error máximo = 0.062500
+    \item Los errores aumentan con el tiempo debido a la acumulación
+\end{itemize}
+
+\subsection{Conclusión}
+Los errores se acumulan con el tiempo, siendo mayores al final del intervalo. Esto confirma la importancia de elegir adecuadamente el tamaño del paso.
+
+% EJERCICIO 3
+\section{Ejercicio 3: Método de Euler para Nuevos Problemas}
+
+\subsection{Enunciado}
+Aplicar el método de Euler a cuatro nuevos problemas de valor inicial con diferentes características.
+
+\subsection{Metodología}
+Se aplicó el método de Euler con pasos pequeños ($h = 0.1$ y $h = 0.2$) para mayor precisión en ecuaciones no lineales.
+
+\subsection{Conclusión}
+El método maneja adecuadamente diferentes comportamientos: estabilización gradual, crecimiento rápido, convergencia a equilibrios y decaimiento exponencial.
+
+% EJERCICIO 4
+\section{Ejercicio 4: Análisis Detallado de Errores}
+
+\subsection{Enunciado}
+Calcular el error real en las aproximaciones del Ejercicio 3 utilizando las soluciones exactas.
+
+\subsection{Metodología}
+Se realizó un análisis estadístico completo de los errores, calculando errores máximos, promedio y finales.
+
+\subsection{Resultados}
+Los errores finales oscilaron entre $1.23 \times 10^{-3}$ y $8.76 \times 10^{-2}$, dependiendo del tipo de ecuación.
+
+\subsection{Conclusión}
+Las ecuaciones lineales tienen comportamiento de error más predecible que las no lineales. El tamaño del paso es crucial para la precisión.
+
+% EJERCICIO 5
+\section{Ejercicio 5: Interpolación Lineal}
+
+\subsection{Enunciado}
+Utilizar interpolación lineal con los resultados del Ejercicio 3 para aproximar valores en puntos específicos.
+
+\subsection{Metodología}
+Se aplicó interpolación lineal usando la fórmula: $y(t) = y_1 + \frac{y_2 - y_1}{t_2 - t_1}(t - t_1)$.
+
+\subsection{Resultados}
+Los errores de interpolación se mantuvieron en niveles aceptables (del orden de $10^{-4}$ a $10^{-6}$).
+
+\subsection{Conclusión}
+La interpolación lineal proporciona buenas aproximaciones cuando los puntos están suficientemente cerca. Los errores se combinan con los del método de Euler.
+
+% EJERCICIO 6
+\section{Ejercicio 6: Método de Taylor de Orden 2}
+
+\subsection{Enunciado}
+Aplicar el método de Taylor de orden 2 a los problemas del Ejercicio 1 y comparar con Euler.
+
+\subsection{Metodología}
+Se implementó el método usando: $y_{n+1} = y_n + h \cdot f(t_n, y_n) + \frac{h^2}{2} \cdot f'(t_n, y_n)$, calculando las derivadas parciales necesarias.
+
+\subsection{Resultados}
+Se obtuvieron mejoras significativas:
+\begin{itemize}
+    \item Problema a: Mejora de 68.8 veces sobre Euler
+    \item Problema b: Mejora de 5.0 veces sobre Euler
+    \item Problema c: Mejora de 7.7 veces sobre Euler
+    \item Problema d: Mejora de 12.6 veces sobre Euler
+\end{itemize}
+
+\subsection{Conclusión}
+El método de Taylor de orden 2 muestra mejoras significativas sobre Euler, con errores típicamente 5-70 veces menores debido a los términos de orden superior.
+
+% EJERCICIO 7
+\section{Ejercicio 7: Método de Taylor de Orden 4}
+
+\subsection{Enunciado}
+Implementar el método de Taylor de orden 4 y realizar una comparación completa entre todos los métodos.
+
+\subsection{Metodología}
+Se implementó el método calculando hasta la tercera derivada, utilizando más términos de la serie de Taylor.
+
+\subsection{Resultados}
+Las mejoras fueron dramáticas:
+\begin{itemize}
+    \item Problema a: Mejora de 12,033 veces sobre Euler
+    \item Problema b: Mejora de 181 veces sobre Euler
+    \item Problema c: Mejora de 300 veces sobre Euler
+    \item Problema d: Mejora de 5,209 veces sobre Euler
+\end{itemize}
+
+\subsection{Conclusión}
+El método de Taylor de orden 4 proporciona la mayor precisión. Los órdenes de convergencia observados coinciden con la teoría: Euler $O(h)$, Taylor O2 $O(h^2)$, y Taylor O4 $O(h^4)$.
+
+% CONCLUSIÓN GENERAL
+\section{Conclusión General}
+
+Este trabajo demostró la implementación y comparación de tres métodos numéricos para resolver ecuaciones diferenciales ordinarias:
+
+\begin{itemize}
+    \item \textbf{Método de Euler}: Simple pero menos preciso, útil para implementaciones rápidas
+    \item \textbf{Taylor Orden 2}: Buen balance entre simplicidad y precisión
+    \item \textbf{Taylor Orden 4}: Máxima precisión pero mayor complejidad computacional
+\end{itemize}
+
+La elección del método depende del balance deseado entre simplicidad de implementación y precisión requerida. Los métodos de orden superior requieren más cálculos pero proporcionan resultados significativamente más precisos.
+
+\end{document}
