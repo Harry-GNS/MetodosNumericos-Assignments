@@ -1,3 +1,5 @@
+![Banner General](generalb.png)
+
 # Métodos Numéricos
 
 Este repositorio reúne todos mis trabajos de métodos numéricos que anteriormente tenía en repositorios separados.
@@ -10,5 +12,6 @@ Este repositorio reúne todos mis trabajos de métodos numéricos que anteriorme
 ![Intersecciones Animación](Taller-Clase/intersecciones_animacion.gif)
 
 ![Método de Newton](Taller-Clase/newton_method.gif)
+![Proyecyo IB](Proyecto1B-MetodosNumericos-Geometria\image.png)
 
 Cada carpeta contiene un README específico que explica su contenido detallado.
